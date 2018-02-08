@@ -23,7 +23,7 @@ gulp.task('script', function() {
 		/*.pipe(rename("*.min.js"))*/
 		/*.pipe(babel({presets:['es2015']}))*/
         .pipe(uglify())
-		.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+		/*.on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })*/
         .pipe(gulp.dest('dist'));
 });
 
@@ -33,11 +33,11 @@ gulp.task('css', function(){
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('images', function(){
-    gulp.src('./src/**/*.*', options)
-        .pipe(imagemin({progressive:true}))
-        .pipe(gulp.dest('dist'))
-});
+//gulp.task('images', function(){
+//    gulp.src('./src/**/*.*', options)
+//        .pipe(imagemin({progressive:true}))
+//        .pipe(gulp.dest('dist'))
+//});
 
 // 将html文件中没有优化过的js和css部分进行压缩优化
 gulp.task('usemin',['jshint'], function(){
@@ -68,5 +68,5 @@ gulp.task('html', function () {
 /*gulp.task('auto', function(){
     gulp.watch(['./!*.js', './!*.css', './!*.jpg'], ['script', 'css']);
 });*/
-gulp.task('default', ['script', 'css', 'images', 'html']);
+gulp.task('default', ['script', 'css', 'html']);
 
